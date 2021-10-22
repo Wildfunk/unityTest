@@ -1,29 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.Tilemaps;
 using UnityEngine.Tilemaps;
-using System.Linq;
 
 public class TileMap : MonoBehaviour
 {
     // Start is called before the first frame update
     private Tilemap tm;
-    //private Grid gr;
-    //private TileBase tb;
-    //private Tile tl;
     public GameObject tileMap;
-    //public GameObject grid;
-    public TileBase tileBase;
-    public TileMapStruct[] arr;
-    public TileMapDataTest[] arrT;
-    public DictionaryBase map;
-    
-    //public TileMapData tmData;
-    public TileMapStruct tmData;
-    public TileMapDataTest tmDataT;
+    //public TileBase tileBase;
+    private Tilemap tmFence;
+    public GameObject tileMapFence;
+    //public TileBase tileBaseFence;
+  
     public const string pathData = "Data/test";
-    public const string nameDataFile = "TileMapStruct5";
+    public const string nameDataFile = "TileMapStruct7";
 
 
     List<TileMapDataTest> dataTests = new List<TileMapDataTest>();
@@ -31,17 +22,19 @@ public class TileMap : MonoBehaviour
 
     void Start()
     {
-        //print(gameObject + "a"); 
-        tm = gameObject.GetComponent<Tilemap>();
-        //print(tm.GetTile(new Vector3Int(7,-1,0)));
-        tm.SetTile((new Vector3Int(8, -1, 0)),tileBase);
-
+        tm = tileMap.GetComponent<Tilemap>();
+        tmFence = tileMapFence.GetComponent<Tilemap>();
+        GameObject prefab = tm.GetInstantiatedObject(new Vector3Int(-11, 9, 0));
+        Debug.Log(prefab.transform.rotation + "1" );
+        prefab.transform.Rotate(new Vector3(90f, 180.0f, 0));
+        Debug.Log(prefab.transform.rotation + "2");
+        Debug.Log(" obvjeto aaaaaaaaa");
 
         BoundsInt bounds = tm.cellBounds;
-        //print(bounds + "bounds");
         TileBase[] allTiles = tm.GetTilesBlock(bounds);
-        //print(allTiles + "allTiles first");
 
+        BoundsInt boundsFence = tm.cellBounds;
+        TileBase[] allTilesFence = tm.GetTilesBlock(bounds);
 
 
         for (int x = bounds.min.x; x < bounds.max.x; x++)
@@ -49,53 +42,77 @@ public class TileMap : MonoBehaviour
             for (int y = bounds.min.y; y < bounds.max.y; y++)
             {
                 var cellPosition = new Vector3Int(x, y, 0);
-                //var sprite = tm.GetSprite(cellPosition);
                 var tile = tm.GetTile(cellPosition);
                 var position = cellPosition;
-               
+                var layer = tm.name;
+                
                 if (!tile)//&& !sprite)
                 {
                     continue;
                 }
-                //var dataFound = SaveLoadSystemData.LoadData<TileMapData>(pathData, nameDataFile);
-
-                //if (dataFound == null)
-                //{
-                   
                     
-                        try
-                        {
+                try
+                {
+                    dataTests.Add(new TileMapDataTest(tile.name, position.x, position.y,layer));
+                    FileHandler.SaveToJSON<TileMapDataTest>(dataTests, nameDataFile);
                             
-                            dataTests.Add(new TileMapDataTest(tile.name, position.x, position.y));
-                            FileHandler.SaveToJSON<TileMapDataTest>(dataTests, nameDataFile);
-                            
-                        }
-                        catch (System.ArgumentNullException e)
-                        {
+                }
+                catch (System.ArgumentNullException e)
+                {
 
-                            throw e;
-                        }
-                        
-                       
-
-                    
-                    
-                //}
-                
-                //Save();
+                    throw e;
+                }
             }
-            print("tile");
+            
         }
-        //Save();
+        print("primer tm suelo");
+        for (int x = boundsFence.min.x; x < boundsFence.max.x; x++)
+        {
+            for (int y = boundsFence.min.y; y < boundsFence.max.y; y++)
+            {
+                var cellPosition = new Vector3Int(x, y, 0);
+                var tile = tmFence.GetTile(cellPosition);
+                var position = cellPosition;
+                var layer = tmFence.name;
+                if (!tile)//&& !sprite)
+                {
+                    continue;
+                }
+
+                try
+                {
+                    dataTests.Add(new TileMapDataTest(tile.name, position.x, position.y, layer));
+                    FileHandler.SaveToJSON<TileMapDataTest>(dataTests, nameDataFile);
+
+                }
+                catch (System.ArgumentNullException e)
+                {
+
+                    throw e;
+                }
+            }
+        }
+        print("segundo tm madera");
 
     }
-    
+
     // Update is called once per frame
     void Update()
     {
 
     }
 
+
+
+
+
+    //public TileMapStruct[] arr;
+    //public TileMapDataTest[] arrT;
+    //public DictionaryBase map;
+
+    //public TileMapData tmData;
+    //public TileMapStruct tmData;
+    //public TileMapDataTest tmDataT;
 }
-    
+
 

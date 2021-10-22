@@ -44,14 +44,18 @@ public struct TileMapStruct
 [Serializable]
 public class TileMapDataTest
 {
+    public string layer;
     public string tile;
     public int x;
     public int y;
+    public float xRotate;
+    public float yRotate;
 
-    public TileMapDataTest(string Tilee, int X, int Y)
+    public TileMapDataTest(string Tilee, int X, int Y, string layerr)
     {
         tile = Tilee;
         x = X; 
         y = Y;
+        layer = layerr;
     }
 }
