@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!65 &6801806015445964272
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8214772371838587245}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.55658925, y: 1.1588588, z: 0.74}
-  m_Center: {x: 0.30113477, y: 0, z: 0.37}
 --- !u!65 &4569876588729116206
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26,6 +13,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.1588587, y: 0.57920533, z: 0.74}
   m_Center: {x: 0, y: 0.28982672, z: 0.37}
+--- !u!65 &6801806015445964272
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8214772371838587245}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.55658925, y: 1.1588588, z: 0.74}
+  m_Center: {x: 0.30113477, y: 0, z: 0.37}
 --- !u!1 &9133812568391651698
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,15 +70,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35f43d0960b48d74e8053c4a8a749de0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.7650681
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35f43d0960b48d74e8053c4a8a749de0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.707606
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35f43d0960b48d74e8053c4a8a749de0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.30526048
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35f43d0960b48d74e8053c4a8a749de0, type: 3}
       propertyPath: m_LocalRotation.w

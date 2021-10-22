@@ -41,10 +41,12 @@ public class TileMapTest : MonoBehaviour
                 {
                     if (tile.name == item.tile)
                     {
+                        print("aaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                         tmTest.SetTile((new Vector3Int(item.x, item.y, 0)), tile);
 
-                        GameObject prefab = tmTest.GetInstantiatedObject(new Vector3Int(-11, 9, 0));
-                        prefab.transform.Rotate(new Vector3(0f, -90f,0));  
+                        
+
+                        
                     }
 
                 }
@@ -56,10 +58,21 @@ public class TileMapTest : MonoBehaviour
                     if (tile.name == item.tile)
                     {
                         tmFenceTest.SetTile((new Vector3Int(item.x, item.y, 0)), tile);
+
                     }
                 }
+                
             }
         }
+        //GameObject prefab1 = tmFenceTest.GetInstantiatedObject(new Vector3Int(-5, 12, 0));
+        //print(prefab1);
+        //prefab1.transform.Rotate(new Vector3(0, 90f, 0));
+        GameObject prefab = tmTest.GetInstantiatedObject(new Vector3Int(-11, 9, 0));
+        prefab.transform.Rotate(new Vector3(0f, -90f, 0));
+        GameObject prefab2 = tmTest.GetInstantiatedObject(new Vector3Int(-11, 8, 0));
+        prefab2.transform.Rotate(new Vector3(0f, -90f, 0));
+        GameObject prefab3 = tmFenceTest.GetInstantiatedObject(new Vector3Int(-3, 12, 0));
+        prefab3.transform.Rotate(new Vector3(0f, -90f, 0));
     }
 }
 

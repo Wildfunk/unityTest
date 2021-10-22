@@ -8,10 +8,8 @@ public class TileMap : MonoBehaviour
     // Start is called before the first frame update
     private Tilemap tm;
     public GameObject tileMap;
-    //public TileBase tileBase;
     private Tilemap tmFence;
     public GameObject tileMapFence;
-    //public TileBase tileBaseFence;
   
     public const string pathData = "Data/test";
     public const string nameDataFile = "TileMapStruct7";
@@ -24,10 +22,10 @@ public class TileMap : MonoBehaviour
     {
         tm = tileMap.GetComponent<Tilemap>();
         tmFence = tileMapFence.GetComponent<Tilemap>();
-        GameObject prefab = tm.GetInstantiatedObject(new Vector3Int(-11, 9, 0));
-        Debug.Log(prefab.transform.rotation + "1" );
-        prefab.transform.Rotate(new Vector3(90f, 180.0f, 0));
-        Debug.Log(prefab.transform.rotation + "2");
+        GameObject prefab1 = tm.GetInstantiatedObject(new Vector3Int(-11, 9, 0));
+        Debug.Log(prefab1.transform.rotation + "1" + prefab1 );
+        prefab1.transform.Rotate(new Vector3(x: 0, y: 90, 0));
+        Debug.Log(prefab1.transform.rotation + "2");
         Debug.Log(" obvjeto aaaaaaaaa");
 
         BoundsInt bounds = tm.cellBounds;
@@ -99,7 +97,7 @@ public class TileMap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
 
